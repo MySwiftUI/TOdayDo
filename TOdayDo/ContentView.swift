@@ -9,10 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+//        NavigationView {
+//            NavigationLink(
+//                destination: ListView()
+//            ) {
+//                Text("First View")
+//                    .fontWeight(.medium)
+//                    .font(.system(size: 24))
+//                    .padding(10)
+//                    .foregroundColor(Color.white)
+//                    .background(Color.blue)
+//                    .cornerRadius(30)
+//            }
+//            .padding(.top, 54)
+//        }
         HStack {
-            VStack {
-                
-            }
+            ListView()
         }
     }
 }

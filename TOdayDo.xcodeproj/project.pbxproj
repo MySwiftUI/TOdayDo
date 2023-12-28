@@ -14,6 +14,7 @@
 		B616763A2B3D345400DD84D5 /* TOdayDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676392B3D345400DD84D5 /* TOdayDoTests.swift */; };
 		B61676442B3D345400DD84D5 /* TOdayDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676432B3D345400DD84D5 /* TOdayDoUITests.swift */; };
 		B61676462B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */; };
+		B61676532B3D35B800DD84D5 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676522B3D35B800DD84D5 /* ListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		B616763F2B3D345400DD84D5 /* TOdayDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOdayDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61676432B3D345400DD84D5 /* TOdayDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOdayDoUITests.swift; sourceTree = "<group>"; };
 		B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOdayDoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B61676522B3D35B800DD84D5 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				B61676282B3D345300DD84D5 /* TOdayDoApp.swift */,
 				B616762A2B3D345300DD84D5 /* ContentView.swift */,
+				B61676522B3D35B800DD84D5 /* ListView.swift */,
 				B616762C2B3D345400DD84D5 /* Assets.xcassets */,
 				B616762E2B3D345400DD84D5 /* Preview Content */,
 			);
@@ -259,6 +262,7 @@
 			files = (
 				B616762B2B3D345300DD84D5 /* ContentView.swift in Sources */,
 				B61676292B3D345300DD84D5 /* TOdayDoApp.swift in Sources */,
+				B61676532B3D35B800DD84D5 /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
