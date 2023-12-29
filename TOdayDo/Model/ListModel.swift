@@ -7,18 +7,15 @@
 
 import SwiftUI
 
-struct ListModel {
+struct ListModel: Identifiable {
+    var id = UUID()
     var title: String
     var time: String
-    var bgColor: Color
     
     init(
         title: String,
-        time: String,
-        bgColor: Color
+        time: String
     ) {
         self.title = title
-        self.time = time
-        self.bgColor = bgColor
-    }
+        self.time = time    }
 }
