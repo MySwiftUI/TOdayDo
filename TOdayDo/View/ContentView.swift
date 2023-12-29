@@ -9,22 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-//        NavigationView {
-//            NavigationLink(
-//                destination: ListView()
-//            ) {
-//                Text("First View")
-//                    .fontWeight(.medium)
-//                    .font(.system(size: 24))
-//                    .padding(10)
-//                    .foregroundColor(Color.white)
-//                    .background(Color.blue)
-//                    .cornerRadius(30)
-//            }
-//            .padding(.top, 54)
-//        }
-        HStack {
-            ListView(title: "쇼핑 다녀오기", time: "12:00 ~ 14:00", bgColor: .teal)
+        NavigationView {
+            VStack {
+                HStack {
+                    Text("TOdayDO")
+                        .font(.system(size: 36))
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                        .padding(.leading, 24)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        print("DEBUG: 추가 버튼 클릭하셨습니다.")
+                    }) {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .frame(width: 28, height: 28)
+                            .foregroundColor(.black)
+                    }
+                    .padding(.trailing, 24)
+                }
+                .padding([.top, .bottom], 14)
+                .background(
+                    LinearGradient(colors: [.white, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
+                
+                List {
+                    ForEach(items) { item in
+                        ListView(model: item)
+                            .listRowSeparator(.hidden)
+                    }
+                }
+                .listStyle(.plain)
+                .padding([.top, .bottom], -4)
+                
+                Rectangle().frame(height: 0)
+                    .background(
+                        LinearGradient(colors: [.white, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+            }
         }
     }
 }
