@@ -15,6 +15,7 @@
 		B61676442B3D345400DD84D5 /* TOdayDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676432B3D345400DD84D5 /* TOdayDoUITests.swift */; };
 		B61676462B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */; };
 		B61676532B3D35B800DD84D5 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676522B3D35B800DD84D5 /* ListView.swift */; };
+		B6C8C64E2B3E9B6000C98FCF /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C8C64D2B3E9B6000C98FCF /* ListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		B61676432B3D345400DD84D5 /* TOdayDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOdayDoUITests.swift; sourceTree = "<group>"; };
 		B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOdayDoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B61676522B3D35B800DD84D5 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		B6C8C64D2B3E9B6000C98FCF /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,11 +98,10 @@
 		B61676272B3D345300DD84D5 /* TOdayDo */ = {
 			isa = PBXGroup;
 			children = (
-				B61676282B3D345300DD84D5 /* TOdayDoApp.swift */,
-				B616762A2B3D345300DD84D5 /* ContentView.swift */,
-				B61676522B3D35B800DD84D5 /* ListView.swift */,
-				B616762C2B3D345400DD84D5 /* Assets.xcassets */,
-				B616762E2B3D345400DD84D5 /* Preview Content */,
+				B6C8C64B2B3E9ACD00C98FCF /* Application */,
+				B6C8C64A2B3E9AA700C98FCF /* Resource */,
+				B6C8C6492B3E9A9D00C98FCF /* View */,
+				B6C8C64C2B3E9AD500C98FCF /* Model */,
 			);
 			path = TOdayDo;
 			sourceTree = "<group>";
@@ -128,6 +129,40 @@
 				B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */,
 			);
 			path = TOdayDoUITests;
+			sourceTree = "<group>";
+		};
+		B6C8C6492B3E9A9D00C98FCF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B616762A2B3D345300DD84D5 /* ContentView.swift */,
+				B61676522B3D35B800DD84D5 /* ListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6C8C64A2B3E9AA700C98FCF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B616762E2B3D345400DD84D5 /* Preview Content */,
+				B616762C2B3D345400DD84D5 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		B6C8C64B2B3E9ACD00C98FCF /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B61676282B3D345300DD84D5 /* TOdayDoApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B6C8C64C2B3E9AD500C98FCF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6C8C64D2B3E9B6000C98FCF /* ListModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +298,7 @@
 				B616762B2B3D345300DD84D5 /* ContentView.swift in Sources */,
 				B61676292B3D345300DD84D5 /* TOdayDoApp.swift in Sources */,
 				B61676532B3D35B800DD84D5 /* ListView.swift in Sources */,
+				B6C8C64E2B3E9B6000C98FCF /* ListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +456,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TOdayDo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TOdayDo/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = XK2FZR7MVH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -449,7 +485,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TOdayDo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TOdayDo/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = XK2FZR7MVH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
