@@ -24,7 +24,7 @@ struct ContentView: View {
 //            .padding(.top, 54)
 //        }
         HStack {
-            ListView()
+            ListView(title: "쇼핑 다녀오기", time: "12:00 ~ 14:00", bgColor: .teal)
         }
     }
 }
