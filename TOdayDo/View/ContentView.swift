@@ -13,12 +13,12 @@ struct ContentView: View {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
                     HStack {
-                        Text("TOday Do")
-                            .font(.system(size: 36))
-                            .fontWeight(.black)
-                            .padding(.leading, 16)
-                        
                         Spacer()
+                        Text("TOday Do")
+                            .font(.system(size: 42))
+                            .fontWeight(.black)
+                            .foregroundColor(.indigo)
+                            .padding(.trailing, 14)
                     }
                     .padding(.top, 26)
                     
@@ -32,7 +32,7 @@ struct ContentView: View {
                         .padding(12)
                         .background(.white)
                     }
-                    .padding(EdgeInsets(top: -16, leading: 0, bottom: 8, trailing: 0))
+                    .padding(EdgeInsets(top: -18, leading: 0, bottom: 8, trailing: 0))
                 }
                 .background(
                     LinearGradient(colors: [.white, .mint], startPoint: .topTrailing, endPoint: .bottomLeading)
