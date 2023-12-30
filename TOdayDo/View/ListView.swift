@@ -23,7 +23,7 @@ struct ListView: View {
             Image(systemName: "note.text")
                 .resizable()
                 .frame(width: 32, height: 32)
-                .foregroundColor(viewDidTap ? .secondary : .black)
+                .foregroundColor(viewDidTap ? .secondary : .white)
             
             VStack(alignment: .leading, spacing: 2) {
                 Divider()
@@ -32,19 +32,19 @@ struct ListView: View {
                 textStrikeThrough(text: model.title, insertStrike: viewDidTap)
                     .font(.system(size: 22))
                     .fontWeight(.bold)
-                    .foregroundColor(viewDidTap ? .secondary : .black)
+                    .foregroundColor(viewDidTap ? .secondary : .white)
                 
                 textStrikeThrough(text: model.time, insertStrike: viewDidTap)
                     .font(.system(size: 18))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(viewDidTap ? .secondary : .white)
             }
         }
         .padding(24)
         .background(
             LinearGradient(
-                colors: viewDidTap ? [.white, .secondary] : [.white, .indigo],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing)
+                colors: viewDidTap ? [.white, .secondary] : [.blue, .mint],
+                startPoint: .bottomTrailing,
+                endPoint: .topLeading)
         )
         .cornerRadius(20)
         .onTapGesture {
