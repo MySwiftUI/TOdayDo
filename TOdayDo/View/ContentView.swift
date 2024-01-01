@@ -31,7 +31,7 @@ struct ContentView: View {
                             }
                         }
                         .padding(12)
-                        .background(.white)
+                        .background(.clear)
                     }
                     .padding(EdgeInsets(top: -18, leading: 0, bottom: 8, trailing: 0))
                 }
@@ -41,9 +41,8 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
-                    Button(action: {
-                        print("DEBUG: Plus button did tap")
-                    }) {
+                    
+                    NavigationLink(destination: AddListView()) {
                         Image(systemName: "plus")
                             .resizable()
                             .frame(width: 32, height: 32)
@@ -52,6 +51,7 @@ struct ContentView: View {
                             .background(.indigo)
                             .cornerRadius(32)
                     }
+                        
                     Rectangle()
                         .frame(width: 8, height: 0)
                 }
