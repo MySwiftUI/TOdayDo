@@ -7,14 +7,42 @@
 
 import SwiftUI
 
-struct CustomTextField: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct CustomTextField: ViewModifier {
+    
+    var width: CGFloat
+    var height: CGFloat
+    var fontSize: CGFloat
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: fontSize))
+            .padding()
+            .textInputAutocapitalization(.never)
+            .frame(width: width, height: height)
+            .background(
+                RoundedRectangle(cornerRadius: 7)
+                    .foregroundColor(.clear)
+                    .frame(width: width, height: height)
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: 7)
+                    .stroke(.teal, lineWidth: 2)
+            }
     }
 }
 
-struct CustomTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomTextField()
+extension View {
+    func customTextFieldModifier(
+        width: CGFloat,
+        height: CGFloat,
+        fontSize: CGFloat
+    ) -> some View {
+        modifier(
+            CustomTextField(
+                width: width,
+                height: height,
+                fontSize: fontSize
+            )
+        )
     }
 }
