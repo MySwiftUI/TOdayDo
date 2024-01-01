@@ -16,6 +16,8 @@
 		B61676462B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */; };
 		B61676532B3D35B800DD84D5 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676522B3D35B800DD84D5 /* ListView.swift */; };
 		B6C8C64E2B3E9B6000C98FCF /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C8C64D2B3E9B6000C98FCF /* ListModel.swift */; };
+		B6D982E42B417DDB003EB2CD /* CustomNavigaitonBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D982E32B417DDB003EB2CD /* CustomNavigaitonBackButton.swift */; };
+		B6EABDED2B42789E00B3B19A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EABDEC2B42789E00B3B19A /* CustomTextField.swift */; };
 		B6FE06CC2B406236007C2C27 /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FE06CB2B406236007C2C27 /* AddListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOdayDoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B61676522B3D35B800DD84D5 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		B6C8C64D2B3E9B6000C98FCF /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		B6D982E32B417DDB003EB2CD /* CustomNavigaitonBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigaitonBackButton.swift; sourceTree = "<group>"; };
+		B6EABDEC2B42789E00B3B19A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B6FE06CB2B406236007C2C27 /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +143,8 @@
 				B616762A2B3D345300DD84D5 /* ContentView.swift */,
 				B61676522B3D35B800DD84D5 /* ListView.swift */,
 				B6FE06CB2B406236007C2C27 /* AddListView.swift */,
+				B6D982E32B417DDB003EB2CD /* CustomNavigaitonBackButton.swift */,
+				B6EABDEC2B42789E00B3B19A /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,10 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EABDED2B42789E00B3B19A /* CustomTextField.swift in Sources */,
 				B616762B2B3D345300DD84D5 /* ContentView.swift in Sources */,
 				B61676292B3D345300DD84D5 /* TOdayDoApp.swift in Sources */,
 				B61676532B3D35B800DD84D5 /* ListView.swift in Sources */,
 				B6C8C64E2B3E9B6000C98FCF /* ListModel.swift in Sources */,
+				B6D982E42B417DDB003EB2CD /* CustomNavigaitonBackButton.swift in Sources */,
 				B6FE06CC2B406236007C2C27 /* AddListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
