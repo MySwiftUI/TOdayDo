@@ -15,6 +15,7 @@
 		B61676442B3D345400DD84D5 /* TOdayDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676432B3D345400DD84D5 /* TOdayDoUITests.swift */; };
 		B61676462B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */; };
 		B61676532B3D35B800DD84D5 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676522B3D35B800DD84D5 /* ListView.swift */; };
+		B6AFFEDE2B43D6A200879ED7 /* ListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AFFEDD2B43D6A200879ED7 /* ListDataManager.swift */; };
 		B6C8C64E2B3E9B6000C98FCF /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C8C64D2B3E9B6000C98FCF /* ListModel.swift */; };
 		B6D982E42B417DDB003EB2CD /* CustomNavigaitonBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D982E32B417DDB003EB2CD /* CustomNavigaitonBackButton.swift */; };
 		B6EABDED2B42789E00B3B19A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EABDEC2B42789E00B3B19A /* CustomTextField.swift */; };
@@ -50,6 +51,7 @@
 		B61676432B3D345400DD84D5 /* TOdayDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOdayDoUITests.swift; sourceTree = "<group>"; };
 		B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOdayDoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B61676522B3D35B800DD84D5 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		B6AFFEDD2B43D6A200879ED7 /* ListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataManager.swift; sourceTree = "<group>"; };
 		B6C8C64D2B3E9B6000C98FCF /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		B6D982E32B417DDB003EB2CD /* CustomNavigaitonBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigaitonBackButton.swift; sourceTree = "<group>"; };
 		B6EABDEC2B42789E00B3B19A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		B61676272B3D345300DD84D5 /* TOdayDo */ = {
 			isa = PBXGroup;
 			children = (
+				B6AFFEDC2B43D67900879ED7 /* Common */,
 				B6C8C64B2B3E9ACD00C98FCF /* Application */,
 				B6C8C64A2B3E9AA700C98FCF /* Resource */,
 				B6C8C6492B3E9A9D00C98FCF /* View */,
@@ -135,6 +138,14 @@
 				B61676452B3D345400DD84D5 /* TOdayDoUITestsLaunchTests.swift */,
 			);
 			path = TOdayDoUITests;
+			sourceTree = "<group>";
+		};
+		B6AFFEDC2B43D67900879ED7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B6AFFEDD2B43D6A200879ED7 /* ListDataManager.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		B6C8C6492B3E9A9D00C98FCF /* View */ = {
@@ -305,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6EABDED2B42789E00B3B19A /* CustomTextField.swift in Sources */,
+				B6AFFEDE2B43D6A200879ED7 /* ListDataManager.swift in Sources */,
 				B616762B2B3D345300DD84D5 /* ContentView.swift in Sources */,
 				B61676292B3D345300DD84D5 /* TOdayDoApp.swift in Sources */,
 				B61676532B3D35B800DD84D5 /* ListView.swift in Sources */,
