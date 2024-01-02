@@ -63,7 +63,24 @@ struct AddListView: View {
                 .padding(.bottom, 12)
             
             Spacer()
+            
+            Button(action: {
+                listModel.startTime = startTime
+                listModel.endTime = endTime
+//                dismiss()
+            }) {
+                Text("추 가")
+                    .font(.system(size: 20))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .frame(width: deviceWidth - 64, height: 64)
+                    .background(.indigo)
+                    .cornerRadius(32)
+            }
         }
+        .navigationTitle("할 일 추가하기")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomNavigaitonBackButton())
         .background(
             LinearGradient(
                 colors: [.white, .mint], startPoint: .topLeading, endPoint: .bottomTrailing
