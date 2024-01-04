@@ -44,7 +44,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     
-                    NavigationLink(destination: AddListView()) {
+                    NavigationLink(destination: AddListView().environmentObject(viewModel)) {
                         Image(systemName: "plus")
                             .resizable()
                             .frame(width: 32, height: 32)
