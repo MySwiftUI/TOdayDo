@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: ListViewModel
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
@@ -25,7 +27,7 @@ struct ContentView: View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVStack {
-                            ForEach(items) { item in
+                            ForEach(viewModel.listModel) { item in
                                 ListView(model: item)
                                     .listRowSeparator(.hidden)
                             }
@@ -63,5 +65,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ListViewModel())
     }
 }
