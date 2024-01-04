@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-struct ListModel: Identifiable {
+struct ListModel: Identifiable, Codable {
     var id = UUID()
     var title: String
-    var time: String
+    var startTime: Date
+    var endTime: Date
     
     init(
         title: String,
-        time: String
+        startTime: Date,
+        endTime: Date
     ) {
         self.title = title
-        self.time = time    }
+        self.startTime = startTime
+        self.endTime = endTime
+    }
 }

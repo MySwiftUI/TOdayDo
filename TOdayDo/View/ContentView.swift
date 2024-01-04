@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: ListViewModel
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
@@ -25,9 +27,15 @@ struct ContentView: View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVStack {
-                            ForEach(items) { item in
-                                ListView(model: item)
-                                    .listRowSeparator(.hidden)
+                            if viewModel.listModel.isEmpty {
+                                EmptyListView()
+                                    .padding(.top, 24)
+                            }
+                            else {
+                                ForEach(viewModel.listModel) { item in
+                                    ListView(model: item)
+                                        .listRowSeparator(.hidden)
+                                }
                             }
                         }
                         .padding(12)
@@ -42,7 +50,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     
-                    NavigationLink(destination: AddListView()) {
+                    NavigationLink(destination: AddListView().environmentObject(viewModel)) {
                         Image(systemName: "plus")
                             .resizable()
                             .frame(width: 32, height: 32)
@@ -63,5 +71,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ListViewModel())
     }
 }

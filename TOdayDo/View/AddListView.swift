@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct AddListView: View {
+    @State var listModel: ListModel = ListModel(title: "", startTime: Date(), endTime: Date())
     
-    // FIXME: - listModel 초기화 부분도 수정할 예정입니다. (임시 변수)
-    @State var listModel: ListModel = ListModel(title: "", time: "")
-    
-    // FIXME: - 이 부분은 추후 ListModel에 time(String)에서 대체할 부분입니다. (임시 변수)
+    @State private var title: String = ""
     @State private var startTime: Date = Date()
     @State private var endTime: Date = Date()
     
@@ -20,6 +18,11 @@ struct AddListView: View {
     @State private var startTimeViewHidden: Bool = true
     @State private var endTimeViewHidden: Bool = true
     
+    @State private var deviceWidth = UIScreen.main.bounds.width
+    
+    @Environment (\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: ListViewModel
+
     var body: some View {
         VStack {
             Divider()
@@ -29,14 +32,13 @@ struct AddListView: View {
                 text: "내가 오늘 할 일은?",
                 placeHolder: "오늘 할 일을 입력해주세요",
                 isHidden: titleViewHidden,
-                title: $listModel.title
+                title: $title
             )
                 .onTapGesture {
                     withAnimation {
                         titleViewHidden.toggle()
                     }
                 }
-                .padding(.top, 16)
             
             makeTimeView(
                 text: "내가 일을 시작할 시간은?",
@@ -45,6 +47,7 @@ struct AddListView: View {
             )
                 .onTapGesture {
                     withAnimation {
+                        endTimeViewHidden = true
                         startTimeViewHidden.toggle()
                     }
                 }
@@ -57,21 +60,38 @@ struct AddListView: View {
             )
                 .onTapGesture {
                     withAnimation {
+                        startTimeViewHidden = true
                         endTimeViewHidden.toggle()
                     }
                 }
                 .padding(.bottom, 12)
             
             Spacer()
+            
+            Button(action: {
+                listModel.title = title
+                listModel.startTime = startTime
+                listModel.endTime = endTime
+                viewModel.listModel.append(listModel)
+                dismiss()
+            }) {
+                Text("추 가")
+                    .font(.system(size: 20))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .frame(width: deviceWidth - 64, height: 64)
+                    .background(.indigo)
+                    .cornerRadius(32)
+            }
         }
+        .navigationTitle("할 일 추가하기")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomNavigaitonBackButton())
         .background(
             LinearGradient(
                 colors: [.white, .mint], startPoint: .topLeading, endPoint: .bottomTrailing
             )
         )
-        .navigationTitle("할 일 추가하기")
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: CustomNavigaitonBackButton())
     }
     
     /// 할 일을 입력하는 UI
@@ -92,14 +112,16 @@ struct AddListView: View {
                 Spacer()
                 
                 Image(systemName: isHidden ? "chevron.down" : "chevron.up")
-                    .padding(.trailing, 18)
+                    .padding(.trailing, 32)
             }
             .padding(.top, 16)
 
+
             if !titleViewHidden {
                 TextField(placeHolder, text: title)
-                    .customTextFieldModifier(width: 340, height: 54, fontSize: 16)
-                    .accentColor(.mint)
+                    .customTextFieldModifier(width: deviceWidth - 64, height: 54, fontSize: 16)
+                    .accentColor(.indigo)
+                    .onTapGesture { }
             }
             
             Divider()
@@ -128,13 +150,14 @@ struct AddListView: View {
                 Spacer()
                 
                 Image(systemName: isHidden ? "chevron.down" : "chevron.up")
-                    .padding(.trailing, 18)
+                    .padding(.trailing, 32)
             }
 
             if !isHidden {
                 DatePicker("", selection: time, displayedComponents: .hourAndMinute)
                     .datePickerStyle(.wheel)
                     .padding([.leading, .trailing], 32)
+                    .onTapGesture { }
             }
             
             Divider()

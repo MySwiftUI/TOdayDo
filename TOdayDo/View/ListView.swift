@@ -10,13 +10,7 @@ import SwiftUI
 struct ListView: View {
     @State private var viewDidTap: Bool = false
     
-    private var model: ListModel
-    
-    init(
-        model: ListModel
-    ) {
-        self.model = model
-    }
+    @State var model: ListModel
     
     var body: some View {
         HStack(spacing: 24) {
@@ -29,12 +23,18 @@ struct ListView: View {
                 Divider()
                     .opacity(0)
                 
-                textStrikeThrough(text: model.title, insertStrike: viewDidTap)
+                textStrikeThrough(
+                    text: model.title,
+                    insertStrike: viewDidTap
+                )
                     .font(.system(size: 22))
                     .fontWeight(.bold)
                     .foregroundColor(viewDidTap ? .secondary : .white)
                 
-                textStrikeThrough(text: model.time, insertStrike: viewDidTap)
+                textStrikeThrough(
+                    text: changeDateToString(startTime: model.startTime, endTime: model.endTime),
+                    insertStrike: viewDidTap
+                )
                     .font(.system(size: 18))
                     .foregroundColor(viewDidTap ? .secondary : .white)
             }
@@ -54,6 +54,7 @@ struct ListView: View {
         }
     }
     
+    /// 취소선 추가되는 Text View
     private func textStrikeThrough(
         text: String,
         insertStrike: Bool
@@ -61,12 +62,23 @@ struct ListView: View {
         Text(text)
             .strikethrough(insertStrike, color: .secondary)
     }
+    
+    /// Date 타입 시작시간, 끝나는 시간 String 반환
+    private func changeDateToString(
+        startTime: Date,
+        endTime: Date
+    ) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        return "\(dateFormatter.string(from: startTime)) ~ \(dateFormatter.string(from: endTime))"
+    }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView(
-            model: ListModel(title: "SwiftUI 공부하기", time: "13:00 ~ 16:00")
+            model: ListModel(title: "Test title", startTime: Date(), endTime: Date())
         )
     }
 }

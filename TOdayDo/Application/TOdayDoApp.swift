@@ -12,6 +12,7 @@ struct TOdayDoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(ListViewModel())
         }
     }
 }
