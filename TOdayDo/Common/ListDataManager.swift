@@ -30,6 +30,6 @@ final class ListDataManager {
             }
         }
         print("DEBUG: ListDataManager loadData() → 데이터 로드에 성공했습니다.\n Empty data")
-        return [ListModel(title: "", startTime: Date(), endTime: Date())]
+        return []
     }
 }

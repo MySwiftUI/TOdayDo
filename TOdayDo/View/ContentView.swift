@@ -27,9 +27,15 @@ struct ContentView: View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVStack {
-                            ForEach(viewModel.listModel) { item in
-                                ListView(model: item)
-                                    .listRowSeparator(.hidden)
+                            if viewModel.listModel.isEmpty {
+                                EmptyListView()
+                                    .padding(.top, 24)
+                            }
+                            else {
+                                ForEach(viewModel.listModel) { item in
+                                    ListView(model: item)
+                                        .listRowSeparator(.hidden)
+                                }
                             }
                         }
                         .padding(12)
