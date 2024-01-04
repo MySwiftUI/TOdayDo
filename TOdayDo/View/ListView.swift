@@ -10,13 +10,7 @@ import SwiftUI
 struct ListView: View {
     @State private var viewDidTap: Bool = false
     
-    private var model: ListModel
-    
-    init(
-        model: ListModel
-    ) {
-        self.model = model
-    }
+    @State var model: ListModel
     
     var body: some View {
         HStack(spacing: 24) {
