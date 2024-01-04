@@ -26,7 +26,7 @@ struct CustomTextField: ViewModifier {
             )
             .overlay {
                 RoundedRectangle(cornerRadius: 7)
-                    .stroke(.teal, lineWidth: 2)
+                    .stroke(.indigo, lineWidth: 1.5)
             }
     }
 }

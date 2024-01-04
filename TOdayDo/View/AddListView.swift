@@ -47,6 +47,7 @@ struct AddListView: View {
             )
                 .onTapGesture {
                     withAnimation {
+                        endTimeViewHidden = true
                         startTimeViewHidden.toggle()
                     }
                 }
@@ -59,6 +60,7 @@ struct AddListView: View {
             )
                 .onTapGesture {
                     withAnimation {
+                        startTimeViewHidden = true
                         endTimeViewHidden.toggle()
                     }
                 }
@@ -114,10 +116,11 @@ struct AddListView: View {
             }
             .padding(.top, 16)
 
+
             if !titleViewHidden {
                 TextField(placeHolder, text: title)
                     .customTextFieldModifier(width: deviceWidth - 64, height: 54, fontSize: 16)
-                    .accentColor(.mint)
+                    .accentColor(.indigo)
                     .onTapGesture { }
             }
             
