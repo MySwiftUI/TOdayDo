@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
-                    makeHeader(title: "Today Do")
+                    makeHeaderView(title: "Today Do")
                         .padding(.top, 26)
                     
                     makeListView(viewModel: viewModel)
@@ -41,7 +41,7 @@ struct ContentView: View {
     
     /// 헤더 UI 추가하는 기능
     @ViewBuilder
-    private func makeHeader(
+    private func makeHeaderView(
         title: String
     ) -> some View {
         HStack {
