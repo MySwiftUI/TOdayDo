@@ -14,34 +14,11 @@ struct ContentView: View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
-                    HStack {
-                        Text("TOday Do")
-                            .font(.system(size: 42))
-                            .fontWeight(.black)
-                            .foregroundColor(.indigo)
-                            .padding(.leading, 16)
-                        
-                        Spacer()
-                    }
-                    .padding(.top, 26)
+                    makeHeader(title: "Today Do")
+                        .padding(.top, 26)
                     
-                    ScrollView(.vertical, showsIndicators: false) {
-                        LazyVStack {
-                            if viewModel.listModel.isEmpty {
-                                EmptyListView()
-                                    .padding(.top, 24)
-                            }
-                            else {
-                                ForEach(viewModel.listModel) { item in
-                                    ListView(model: item)
-                                        .listRowSeparator(.hidden)
-                                }
-                            }
-                        }
-                        .padding(12)
-                        .background(.clear)
-                    }
-                    .padding(EdgeInsets(top: -18, leading: 0, bottom: 8, trailing: 0))
+                    makeListView(viewModel: viewModel)
+                        .padding(EdgeInsets(top: -18, leading: 0, bottom: 8, trailing: 0))
                 }
                 .background(
                     LinearGradient(colors: [.white, .mint], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -50,20 +27,73 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     
-                    NavigationLink(destination: AddListView().environmentObject(viewModel)) {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .padding(12)
-                            .foregroundColor(.white)
-                            .background(.indigo)
-                            .cornerRadius(32)
-                    }
-                        
-                    Rectangle()
-                        .frame(width: 8, height: 0)
+                    makeFloatingActionButton(
+                        imageName: "plus",
+                        width: 32,
+                        height: 32,
+                        destination: AddListView().environmentObject(viewModel) as! AnyView
+                    )
+                        .padding(.trailing, 16)
                 }
             }
+        }
+    }
+    
+    /// 헤더 UI 추가하는 기능
+    @ViewBuilder
+    private func makeHeader(
+        title: String
+    ) -> some View {
+        HStack {
+            Text(title)
+                .font(.system(size: 42))
+                .fontWeight(.black)
+                .foregroundColor(.indigo)
+                .padding(.leading, 16)
+            
+            Spacer()
+        }
+    }
+    
+    /// 리스트 만드는 기능
+    @ViewBuilder
+    private func makeListView(
+        viewModel: ListViewModel
+    ) -> some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVStack {
+                if viewModel.listModel.isEmpty {
+                    EmptyListView()
+                        .padding(.top, 24)
+                }
+                else {
+                    ForEach(viewModel.listModel) { item in
+                        ListView(model: item)
+                            .listRowSeparator(.hidden)
+                    }
+                }
+            }
+            .padding(12)
+            .background(.clear)
+        }
+    }
+    
+    /// 플로팅 버튼을 추가하는 기능
+    @ViewBuilder
+    private func makeFloatingActionButton(
+        imageName: String,
+        width: CGFloat,
+        height: CGFloat,
+        destination: AnyView
+    ) -> some View {
+        NavigationLink(destination: destination) {
+            Image(systemName: imageName)
+                .resizable()
+                .frame(width: width, height: height)
+                .padding(12)
+                .foregroundColor(.white)
+                .background(.indigo)
+                .cornerRadius(32)
         }
     }
 }
