@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: ListViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
                     HStack {
