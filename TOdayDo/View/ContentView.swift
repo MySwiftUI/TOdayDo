@@ -31,7 +31,7 @@ struct ContentView: View {
                         imageName: "plus",
                         width: 32,
                         height: 32,
-                        destination: AddListView().environmentObject(viewModel) as! AnyView
+                        destination: AddListView().environmentObject(viewModel)
                     )
                         .padding(.trailing, 16)
                 }
@@ -84,7 +84,7 @@ struct ContentView: View {
         imageName: String,
         width: CGFloat,
         height: CGFloat,
-        destination: AnyView
+        destination: some View
     ) -> some View {
         NavigationLink(destination: destination) {
             Image(systemName: imageName)
