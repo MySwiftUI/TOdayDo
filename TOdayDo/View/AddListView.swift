@@ -177,5 +177,6 @@ struct AddListView: View {
 struct AddListView_Previews: PreviewProvider {
     static var previews: some View {
         AddListView()
+            .environmentObject(ListViewModel())
     }
 }
