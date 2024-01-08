@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainListView: View {
     @StateObject var viewModel: ListViewModel
     
     var body: some View {
@@ -100,6 +100,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: ListViewModel())
+        MainListView(viewModel: ListViewModel())
     }
 }

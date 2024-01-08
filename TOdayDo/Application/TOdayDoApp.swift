@@ -11,7 +11,7 @@ import SwiftUI
 struct TOdayDoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: ListViewModel())
+            MainListView(viewModel: ListViewModel())
         }
     }
 }
