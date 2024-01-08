@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B61676292B3D345300DD84D5 /* TOdayDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676282B3D345300DD84D5 /* TOdayDoApp.swift */; };
-		B616762B2B3D345300DD84D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616762A2B3D345300DD84D5 /* ContentView.swift */; };
+		B616762B2B3D345300DD84D5 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616762A2B3D345300DD84D5 /* MainListView.swift */; };
 		B616762D2B3D345400DD84D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B616762C2B3D345400DD84D5 /* Assets.xcassets */; };
 		B61676302B3D345400DD84D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B616762F2B3D345400DD84D5 /* Preview Assets.xcassets */; };
 		B616763A2B3D345400DD84D5 /* TOdayDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61676392B3D345400DD84D5 /* TOdayDoTests.swift */; };
@@ -44,7 +44,7 @@
 /* Begin PBXFileReference section */
 		B61676252B3D345300DD84D5 /* TOdayDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOdayDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61676282B3D345300DD84D5 /* TOdayDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOdayDoApp.swift; sourceTree = "<group>"; };
-		B616762A2B3D345300DD84D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B616762A2B3D345300DD84D5 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		B616762C2B3D345400DD84D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B616762F2B3D345400DD84D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B61676352B3D345400DD84D5 /* TOdayDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOdayDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +164,7 @@
 		B6C8C6492B3E9A9D00C98FCF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B616762A2B3D345300DD84D5 /* ContentView.swift */,
+				B616762A2B3D345300DD84D5 /* MainListView.swift */,
 				B61676522B3D35B800DD84D5 /* ListView.swift */,
 				B6FE06CB2B406236007C2C27 /* AddListView.swift */,
 				B6D982E32B417DDB003EB2CD /* CustomNavigaitonBackButton.swift */,
@@ -332,7 +332,7 @@
 				B6EABDED2B42789E00B3B19A /* CustomTextField.swift in Sources */,
 				B69CECF72B455628005BD682 /* ListViewModel.swift in Sources */,
 				B6AFFEDE2B43D6A200879ED7 /* ListDataManager.swift in Sources */,
-				B616762B2B3D345300DD84D5 /* ContentView.swift in Sources */,
+				B616762B2B3D345300DD84D5 /* MainListView.swift in Sources */,
 				B6C58D2D2B46BF5100861281 /* EmptyListView.swift in Sources */,
 				B61676292B3D345300DD84D5 /* TOdayDoApp.swift in Sources */,
 				B61676532B3D35B800DD84D5 /* ListView.swift in Sources */,

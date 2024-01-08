@@ -21,13 +21,10 @@ struct CustomTextField: ViewModifier {
             .frame(width: width, height: height)
             .background(
                 RoundedRectangle(cornerRadius: 7)
+                    .stroke(.indigo, lineWidth: 1.5)
                     .foregroundColor(.clear)
                     .frame(width: width, height: height)
             )
-            .overlay {
-                RoundedRectangle(cornerRadius: 7)
-                    .stroke(.indigo, lineWidth: 1.5)
-            }
     }
 }
 
