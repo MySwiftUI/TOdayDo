@@ -10,4 +10,8 @@ import SwiftUI
 
 final class ListViewModel: ObservableObject {
     @Published var listModel: [ListModel] = ListDataManager().loadData()
+    
+    @Published var title: String = ""
+    @Published var startTime: Date = Date()
+    @Published var endTime: Date = Date()
 }

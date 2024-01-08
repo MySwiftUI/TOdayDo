@@ -8,12 +8,6 @@
 import SwiftUI
 
 struct AddListView: View {
-    @State var listModel: ListModel = ListModel(title: "", startTime: Date(), endTime: Date())
-    
-    @State private var title: String = ""
-    @State private var startTime: Date = Date()
-    @State private var endTime: Date = Date()
-    
     @State private var titleViewHidden: Bool = false
     @State private var startTimeViewHidden: Bool = true
     @State private var endTimeViewHidden: Bool = true
@@ -32,7 +26,7 @@ struct AddListView: View {
                 text: "내가 오늘 할 일은?",
                 placeHolder: "오늘 할 일을 입력해주세요",
                 isHidden: titleViewHidden,
-                title: $title
+                title: viewModel.$title
             )
                 .onTapGesture {
                     withAnimation {
@@ -43,7 +37,7 @@ struct AddListView: View {
             makeTimeView(
                 text: "내가 일을 시작할 시간은?",
                 isHidden: startTimeViewHidden,
-                time: $startTime
+                time: $viewModel.startTime
             )
                 .onTapGesture {
                     withAnimation {
@@ -56,7 +50,7 @@ struct AddListView: View {
             makeTimeView(
                 text: "내가 일을 끝낼 시간은?",
                 isHidden: endTimeViewHidden,
-                time: $endTime
+                time: $viewModel.endTime
             )
                 .onTapGesture {
                     withAnimation {
@@ -69,10 +63,12 @@ struct AddListView: View {
             Spacer()
             
             Button(action: {
-                listModel.title = title
-                listModel.startTime = startTime
-                listModel.endTime = endTime
-                viewModel.listModel.append(listModel)
+                let listData = ListModel(
+                    title: viewModel.title,
+                    startTime: viewModel.startTime,
+                    endTime: viewModel.endTime
+                )
+                viewModel.listModel.append(listData)
                 dismiss()
             }) {
                 Text("추 가")
@@ -100,7 +96,7 @@ struct AddListView: View {
         text: String,
         placeHolder: String,
         isHidden: Bool,
-        title: Binding<String>
+        title: Published<String>.Publisher
     ) -> some View {
         VStack {
             HStack {
@@ -118,7 +114,10 @@ struct AddListView: View {
 
 
             if !titleViewHidden {
-                TextField(placeHolder, text: title)
+                TextField(placeHolder, text: Binding<String>(
+                    get: { self.viewModel.title },
+                    set: { self.viewModel.title = $0 }
+                ))
                     .customTextFieldModifier(width: deviceWidth - 64, height: 54, fontSize: 16)
                     .accentColor(.indigo)
                     .onTapGesture { }
