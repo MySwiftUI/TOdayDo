@@ -67,7 +67,9 @@ struct MainListView: View {
                         .padding(.top, 24)
                 }
                 else {
-                    ForEach(viewModel.listModel) { item in
+                    ForEach(viewModel.listModel.sorted(by: { first, second in
+                        return first.startTime < second.startTime
+                    })) { item in
                         ListView(model: item)
                             .listRowSeparator(.hidden)
                     }
