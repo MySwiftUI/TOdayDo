@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainListView: View {
-    @StateObject var viewModel: ListViewModel
+    @EnvironmentObject var viewModel: ListViewModel
     
     var body: some View {
         NavigationStack {
@@ -70,7 +70,7 @@ struct MainListView: View {
                     ForEach(viewModel.listModel.sorted(by: { first, second in
                         return first.startTime < second.startTime
                     })) { item in
-                        ListView(model: item) { item in
+                        ListView(item: item) { item in
                             withAnimation {
                                 viewModel.listModel.removeAll(where: { data in
                                     return data.id == item.id
@@ -109,6 +109,7 @@ struct MainListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainListView(viewModel: ListViewModel())
+        MainListView()
+            .environmentObject(ListViewModel(listModel: []))
     }
 }
