@@ -16,7 +16,7 @@ struct AddListView: View {
     @State private var deviceWidth = UIScreen.main.bounds.width
     
     @EnvironmentObject var viewModel: ListViewModel
-    @State private var listData: ListModel = ListModel(title: "", startTime: Date(), endTime: Date())
+    @State private var listData: ListModel = ListModel(title: "", startTime: Date(), endTime: Date(), isFinished: false)
     
     var body: some View {
         VStack {

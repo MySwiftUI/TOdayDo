@@ -130,7 +130,7 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView(
-            model: ListModel(title: "Test title", startTime: Date(),endTime: Date()),
+            item: ListModel(title: "Test title", startTime: Date(),endTime: Date(), isFinished: false),
             onDelete: { _ in }
         )
     }
