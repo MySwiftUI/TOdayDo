@@ -76,6 +76,7 @@ struct MainListView: View {
                                     return data.id == item.id
                                 })
                             }
+                            ListDataManager().saveData(data: viewModel.listModel)
                         }
                         .listRowSeparator(.hidden)
                     }

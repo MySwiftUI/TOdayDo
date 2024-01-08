@@ -65,6 +65,7 @@ struct AddListView: View {
             
             Button(action: {
                 viewModel.listModel.append(listData)
+                ListDataManager().saveData(data: viewModel.listModel)
                 dismiss()
             }) {
                 Text("추 가")
