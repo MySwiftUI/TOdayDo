@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: ListViewModel
+    @StateObject var viewModel: ListViewModel
     
     var body: some View {
         NavigationStack {
@@ -100,7 +100,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            .environmentObject(ListViewModel())
+        ContentView(viewModel: ListViewModel())
     }
 }
