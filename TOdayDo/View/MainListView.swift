@@ -70,8 +70,14 @@ struct MainListView: View {
                     ForEach(viewModel.listModel.sorted(by: { first, second in
                         return first.startTime < second.startTime
                     })) { item in
-                        ListView(model: item)
-                            .listRowSeparator(.hidden)
+                        ListView(model: item) { item in
+                            withAnimation {
+                                viewModel.listModel.removeAll(where: { data in
+                                    return data.id == item.id
+                                })
+                            }
+                        }
+                        .listRowSeparator(.hidden)
                     }
                 }
             }
