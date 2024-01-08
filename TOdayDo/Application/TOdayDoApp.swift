@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct TOdayDoApp: App {
+    @StateObject var viewModel: ListViewModel = ListViewModel(
+        listModel: ListDataManager().loadData()
+    )
+    
     var body: some Scene {
         WindowGroup {
-            MainListView(viewModel: ListViewModel())
+            MainListView()
+                .environmentObject(viewModel)
         }
     }
 }
