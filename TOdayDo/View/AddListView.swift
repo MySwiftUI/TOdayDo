@@ -90,6 +90,15 @@ struct AddListView: View {
         )
     }
     
+    /// 메뉴 여닫는 이미지
+    @ViewBuilder
+    private func menuImage(
+        isOpen: Bool
+    ) -> some View {
+        Image(systemName: isOpen ? "chevron.down" : "chevron.up")
+            .padding(.trailing, 32)
+    }
+    
     /// 할 일을 입력하는 UI
     @ViewBuilder
     private func makeTitleView(
@@ -107,8 +116,7 @@ struct AddListView: View {
                 
                 Spacer()
                 
-                Image(systemName: isHidden ? "chevron.down" : "chevron.up")
-                    .padding(.trailing, 32)
+                menuImage(isOpen: isHidden)
             }
             .padding(.top, 16)
 
@@ -148,8 +156,7 @@ struct AddListView: View {
                 
                 Spacer()
                 
-                Image(systemName: isHidden ? "chevron.down" : "chevron.up")
-                    .padding(.trailing, 32)
+                menuImage(isOpen: isHidden)
             }
 
             if !isHidden {
