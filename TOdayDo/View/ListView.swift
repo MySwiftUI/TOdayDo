@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ListView: View {
-    @State private var isFinished: Bool = false
     @State private var showSideMenu: Bool = false
     
-    @State var model: ListModel
+    @State var item: ListModel
     var onDelete: (ListModel) -> Void
     
     var body: some View {
@@ -20,32 +19,32 @@ struct ListView: View {
                 Image(systemName: "note.text")
                     .resizable()
                     .frame(width: 32, height: 32)
-                    .foregroundColor(isFinished ? .secondary : .white)
+                    .foregroundColor(item.isFinished ? .secondary : .white)
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Divider()
                         .opacity(0)
                     
                     textStrikeThrough(
-                        text: model.title,
-                        insertStrike: isFinished
+                        text: item.title,
+                        insertStrike: item.isFinished
                     )
                         .font(.system(size: 22))
                         .fontWeight(.bold)
-                        .foregroundColor(isFinished ? .secondary : .white)
+                        .foregroundColor(item.isFinished ? .secondary : .white)
                     
                     textStrikeThrough(
-                        text: changeDateToString(startTime: model.startTime, endTime: model.endTime),
-                        insertStrike: isFinished
+                        text: changeDateToString(startTime: item.startTime, endTime: item.endTime),
+                        insertStrike: item.isFinished
                     )
                         .font(.system(size: 18))
-                        .foregroundColor(isFinished ? .secondary : .white)
+                        .foregroundColor(item.isFinished ? .secondary : .white)
                 }
             }
             .padding(24)
             .background(
                 LinearGradient(
-                    colors: isFinished ? [.white, .secondary] : [.blue, .mint],
+                    colors: item.isFinished ? [.white, .secondary] : [.blue, .mint],
                     startPoint: .bottomTrailing,
                     endPoint: .topLeading)
             )
@@ -60,7 +59,8 @@ struct ListView: View {
                 VStack {
                     Button(action: {
                         withAnimation {
-                            isFinished.toggle()
+                            item.isFinished.toggle()
+                            showSideMenu.toggle()
                         }
                     }) {
                         makeImage(
@@ -75,7 +75,7 @@ struct ListView: View {
                     .cornerRadius(8)
                     
                     Button(action: {
-                        onDelete(model)
+                        onDelete(item)
                     }) {
                         makeImage(
                             imageName: "trash",
