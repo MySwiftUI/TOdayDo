@@ -23,8 +23,9 @@ final class ListDataManager {
     public func loadData() -> [ListModel] {
         if let data = UserDefaults.standard.data(forKey: "listData") {
             do {
+                let loadData = try JSONDecoder().decode([ListModel].self, from: data)
                 print("DEBUG: ListDataManager loadData() → 데이터 로드에 성공했습니다.")
-                return try [JSONDecoder().decode(ListModel.self, from: data)]
+                return loadData
             } catch {
                 print("DEBUG: ListDataManager loadData() 에러, \(error.localizedDescription)")
             }
