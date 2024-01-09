@@ -10,6 +10,9 @@ import SwiftUI
 struct MainListView: View {
     @EnvironmentObject var viewModel: ListViewModel
     
+    @State private var showAddListView: Bool = false
+    @State private var showEditListView: Bool = false
+    
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
@@ -27,15 +30,29 @@ struct MainListView: View {
                 HStack {
                     Spacer()
                     
-                    makeFloatingActionButton(
-                        imageName: "plus",
-                        width: 32,
-                        height: 32,
-                        destination: AddListView().environmentObject(viewModel)
-                    )
-                        .padding(.trailing, 16)
+                    Button(action: {
+                        showAddListView.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .padding(12)
+                            .foregroundColor(.white)
+                            .background(.indigo)
+                            .cornerRadius(32)
+                    }
+                    .padding(.trailing, 16)
                 }
             }
+            .navigationDestination(isPresented: $showAddListView, destination: {
+                AddListView(viewType: .add)
+                    .environmentObject(viewModel)
+            })
+            
+            .navigationDestination(isPresented: $showEditListView, destination: {
+                AddListView(viewType: .edit)
+                    .environmentObject(viewModel)
+            })
         }
     }
     
@@ -70,13 +87,19 @@ struct MainListView: View {
                     ForEach(viewModel.listModel.sorted(by: { first, second in
                         return first.startTime < second.startTime
                     })) { item in
-                        ListView(item: item) { item in
+                        ListView(item: item) { action, item in
                             withAnimation {
-                                viewModel.listModel.removeAll(where: { data in
-                                    return data.id == item.id
-                                })
+                                switch action {
+                                case .delete:
+                                    viewModel.listModel.removeAll(where: { data in
+                                        return data.id == item.id
+                                    })
+                                    ListDataManager().saveData(data: viewModel.listModel)
+                                    
+                                case .edit:
+                                    showEditListView.toggle()
+                                }
                             }
-                            ListDataManager().saveData(data: viewModel.listModel)
                         }
                         .listRowSeparator(.hidden)
                     }
@@ -84,25 +107,6 @@ struct MainListView: View {
             }
             .padding(12)
             .background(.clear)
-        }
-    }
-    
-    /// 플로팅 버튼을 추가하는 기능
-    @ViewBuilder
-    private func makeFloatingActionButton(
-        imageName: String,
-        width: CGFloat,
-        height: CGFloat,
-        destination: some View
-    ) -> some View {
-        NavigationLink(destination: destination) {
-            Image(systemName: imageName)
-                .resizable()
-                .frame(width: width, height: height)
-                .padding(12)
-                .foregroundColor(.white)
-                .background(.indigo)
-                .cornerRadius(32)
         }
     }
 }
