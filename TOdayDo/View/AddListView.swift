@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum ListViewType {
+    case edit
+    case add
+}
+
 struct AddListView: View {
     @State private var titleViewHidden: Bool = false
     @State private var startTimeViewHidden: Bool = true
@@ -17,6 +22,8 @@ struct AddListView: View {
     
     @EnvironmentObject var viewModel: ListViewModel
     @State private var listData: ListModel = ListModel(title: "", startTime: Date(), endTime: Date(), isFinished: false)
+    
+    @State var viewType: ListViewType
     
     var body: some View {
         VStack {
@@ -64,11 +71,20 @@ struct AddListView: View {
             Spacer()
             
             Button(action: {
-                viewModel.listModel.append(listData)
+                switch viewType {
+                case .edit:
+                    if let index = viewModel.listModel.firstIndex(where: { $0.id == listData.id }) {
+                        viewModel.listModel[index] = listData
+                    }
+                    
+                case .add:
+                    viewModel.listModel.append(listData)
+                }
+                
                 ListDataManager().saveData(data: viewModel.listModel)
                 dismiss()
             }) {
-                Text("추 가")
+                Text(viewType == .add ? "추 가" : "수 정")
                     .font(.system(size: 20))
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
@@ -77,7 +93,7 @@ struct AddListView: View {
                     .cornerRadius(32)
             }
         }
-        .navigationTitle("할 일 추가하기")
+        .navigationTitle(viewType == .add ? "할 일 추가하기" : "할 일 수정하기")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomNavigaitonBackButton())
         .background(
@@ -170,7 +186,7 @@ struct AddListView: View {
 
 struct AddListView_Previews: PreviewProvider {
     static var previews: some View {
-        AddListView()
+        AddListView(viewType: .edit)
             .environmentObject(ListViewModel(listModel: []))
     }
 }
