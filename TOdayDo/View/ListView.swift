@@ -23,6 +23,7 @@ struct ListView: View {
             if showSideMenu {
                 Button(action: {
                     onButtonPress(.edit, item)
+                    showSideMenu.toggle()
                 }) {
                     makeImage(
                         imageName: "slider.horizontal.3",
@@ -97,6 +98,7 @@ struct ListView: View {
                     
                     Button(action: {
                         onButtonPress(.delete, item)
+                        showSideMenu.toggle()
                     }) {
                         makeImage(
                             imageName: "trash",
