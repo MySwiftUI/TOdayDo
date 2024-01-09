@@ -7,16 +7,26 @@
 
 import SwiftUI
 
+enum ListViewType {
+    case edit
+    case add
+}
+
 struct AddListView: View {
+    @EnvironmentObject var viewModel: ListViewModel
+    @Environment (\.dismiss) private var dismiss
+    
     @State private var titleViewHidden: Bool = false
     @State private var startTimeViewHidden: Bool = true
     @State private var endTimeViewHidden: Bool = true
     
     @State private var deviceWidth = UIScreen.main.bounds.width
     
-    @Environment (\.dismiss) private var dismiss
-    @EnvironmentObject var viewModel: ListViewModel
-
+    @State var item: ListModel = ListModel(
+        title: "", startTime: Date(), endTime: Date(), isFinished: false
+    )
+    @State var viewType: ListViewType
+    
     var body: some View {
         VStack {
             Divider()
@@ -26,7 +36,7 @@ struct AddListView: View {
                 text: "내가 오늘 할 일은?",
                 placeHolder: "오늘 할 일을 입력해주세요",
                 isHidden: titleViewHidden,
-                title: viewModel.$title
+                title: $item.title
             )
                 .onTapGesture {
                     withAnimation {
@@ -37,7 +47,7 @@ struct AddListView: View {
             makeTimeView(
                 text: "내가 일을 시작할 시간은?",
                 isHidden: startTimeViewHidden,
-                time: $viewModel.startTime
+                time: $item.startTime
             )
                 .onTapGesture {
                     withAnimation {
@@ -50,7 +60,7 @@ struct AddListView: View {
             makeTimeView(
                 text: "내가 일을 끝낼 시간은?",
                 isHidden: endTimeViewHidden,
-                time: $viewModel.endTime
+                time: $item.endTime
             )
                 .onTapGesture {
                     withAnimation {
@@ -63,15 +73,20 @@ struct AddListView: View {
             Spacer()
             
             Button(action: {
-                let listData = ListModel(
-                    title: viewModel.title,
-                    startTime: viewModel.startTime,
-                    endTime: viewModel.endTime
-                )
-                viewModel.listModel.append(listData)
+                switch viewType {
+                case .edit:
+                    if let index = viewModel.listModel.firstIndex(where: { $0.id == viewModel.item.id }) {
+                        viewModel.listModel[index] = item
+                    }
+                    
+                case .add:
+                    viewModel.listModel.append(item)
+                }
+                
+                ListDataManager().saveData(data: viewModel.listModel)
                 dismiss()
             }) {
-                Text("추 가")
+                Text(viewType == .add ? "추 가" : "수 정")
                     .font(.system(size: 20))
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
@@ -80,7 +95,7 @@ struct AddListView: View {
                     .cornerRadius(32)
             }
         }
-        .navigationTitle("할 일 추가하기")
+        .navigationTitle(viewType == .add ? "할 일 추가하기" : "할 일 수정하기")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomNavigaitonBackButton())
         .background(
@@ -105,7 +120,7 @@ struct AddListView: View {
         text: String,
         placeHolder: String,
         isHidden: Bool,
-        title: Published<String>.Publisher
+        title: Binding<String>
     ) -> some View {
         VStack {
             HStack {
@@ -122,10 +137,7 @@ struct AddListView: View {
 
 
             if !titleViewHidden {
-                TextField(placeHolder, text: Binding<String>(
-                    get: { self.viewModel.title },
-                    set: { self.viewModel.title = $0 }
-                ))
+                TextField(placeHolder, text: title)
                     .customTextFieldModifier(width: deviceWidth - 64, height: 54, fontSize: 16)
                     .accentColor(.indigo)
                     .onTapGesture { }
@@ -176,7 +188,7 @@ struct AddListView: View {
 
 struct AddListView_Previews: PreviewProvider {
     static var previews: some View {
-        AddListView()
-            .environmentObject(ListViewModel())
+        AddListView(viewType: .edit)
+            .environmentObject(ListViewModel(listModel: []))
     }
 }

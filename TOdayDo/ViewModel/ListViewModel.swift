@@ -9,9 +9,11 @@ import Foundation
 import SwiftUI
 
 final class ListViewModel: ObservableObject {
-    @Published var listModel: [ListModel] = ListDataManager().loadData()
+    @Published var listModel: [ListModel]
+    @Published var item: ListModel
     
-    @Published var title: String = ""
-    @Published var startTime: Date = Date()
-    @Published var endTime: Date = Date()
+    init(listModel: [ListModel], item: ListModel? = nil) {
+        self.listModel = listModel
+        self.item = item ?? ListModel(title: "", startTime: Date(), endTime: Date(), isFinished: false)
+    }
 }

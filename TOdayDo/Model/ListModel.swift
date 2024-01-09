@@ -12,14 +12,17 @@ struct ListModel: Identifiable, Codable {
     var title: String
     var startTime: Date
     var endTime: Date
+    var isFinished: Bool
     
     init(
         title: String,
         startTime: Date,
-        endTime: Date
+        endTime: Date,
+        isFinished: Bool
     ) {
         self.title = title
         self.startTime = startTime
         self.endTime = endTime
+        self.isFinished = isFinished
     }
 }
