@@ -97,6 +97,7 @@ struct MainListView: View {
                                     ListDataManager().saveData(data: viewModel.listModel)
                                     
                                 case .edit:
+                                    viewModel.item = item
                                     showEditListView.toggle()
                                 }
                             }
