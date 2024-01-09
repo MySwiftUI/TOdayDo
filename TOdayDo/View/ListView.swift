@@ -7,14 +7,35 @@
 
 import SwiftUI
 
+enum ListViewButtonAction {
+    case edit
+    case delete
+}
+
 struct ListView: View {
     @State private var showSideMenu: Bool = false
     
     @State var item: ListModel
-    var onDelete: (ListModel) -> Void
+    var onButtonPress: (ListViewButtonAction, ListModel) -> Void
     
     var body: some View {
         HStack {
+            if showSideMenu {
+                Button(action: {
+                    onButtonPress(.edit, item)
+                }) {
+                    makeImage(
+                        imageName: "slider.horizontal.3",
+                        width: 16,
+                        height: 16,
+                        bgColor: .gray
+                    )
+                    .padding()
+                }
+                .background(.gray)
+                .cornerRadius(8)
+            }
+            
             HStack(spacing: 24) {
                 Image(systemName: "note.text")
                     .resizable()
@@ -75,7 +96,7 @@ struct ListView: View {
                     .cornerRadius(8)
                     
                     Button(action: {
-                        onDelete(item)
+                        onButtonPress(.delete, item)
                     }) {
                         makeImage(
                             imageName: "trash",
@@ -131,7 +152,7 @@ struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView(
             item: ListModel(title: "Test title", startTime: Date(),endTime: Date(), isFinished: false),
-            onDelete: { _ in }
+            onButtonPress: { _,_  in }
         )
     }
 }
