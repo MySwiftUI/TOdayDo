@@ -13,16 +13,18 @@ enum ListViewType {
 }
 
 struct AddListView: View {
+    @EnvironmentObject var viewModel: ListViewModel
+    @Environment (\.dismiss) private var dismiss
+    
     @State private var titleViewHidden: Bool = false
     @State private var startTimeViewHidden: Bool = true
     @State private var endTimeViewHidden: Bool = true
     
-    @Environment (\.dismiss) private var dismiss
     @State private var deviceWidth = UIScreen.main.bounds.width
     
-    @EnvironmentObject var viewModel: ListViewModel
-    @State private var listData: ListModel = ListModel(title: "", startTime: Date(), endTime: Date(), isFinished: false)
-    
+    @State var item: ListModel = ListModel(
+        title: "", startTime: Date(), endTime: Date(), isFinished: false
+    )
     @State var viewType: ListViewType
     
     var body: some View {
@@ -34,7 +36,7 @@ struct AddListView: View {
                 text: "내가 오늘 할 일은?",
                 placeHolder: "오늘 할 일을 입력해주세요",
                 isHidden: titleViewHidden,
-                title: $listData.title
+                title: $item.title
             )
                 .onTapGesture {
                     withAnimation {
@@ -45,7 +47,7 @@ struct AddListView: View {
             makeTimeView(
                 text: "내가 일을 시작할 시간은?",
                 isHidden: startTimeViewHidden,
-                time: $listData.startTime
+                time: $item.startTime
             )
                 .onTapGesture {
                     withAnimation {
@@ -58,7 +60,7 @@ struct AddListView: View {
             makeTimeView(
                 text: "내가 일을 끝낼 시간은?",
                 isHidden: endTimeViewHidden,
-                time: $listData.endTime
+                time: $item.endTime
             )
                 .onTapGesture {
                     withAnimation {
@@ -73,12 +75,12 @@ struct AddListView: View {
             Button(action: {
                 switch viewType {
                 case .edit:
-                    if let index = viewModel.listModel.firstIndex(where: { $0.id == listData.id }) {
-                        viewModel.listModel[index] = listData
+                    if let index = viewModel.listModel.firstIndex(where: { $0.id == viewModel.item.id }) {
+                        viewModel.listModel[index] = item
                     }
                     
                 case .add:
-                    viewModel.listModel.append(listData)
+                    viewModel.listModel.append(item)
                 }
                 
                 ListDataManager().saveData(data: viewModel.listModel)
